@@ -1,5 +1,7 @@
 package com.every.everybackend.users.adapter.out.persistence
 
+import com.every.everybackend.common.exception.ApiException
+import com.every.everybackend.common.exception.errorcode.UserErrorCode
 import com.every.everybackend.users.adapter.out.persistence.entity.UserEntity
 import com.every.everybackend.users.adapter.out.persistence.repository.UserRepository
 import com.every.everybackend.users.domain.User
@@ -17,7 +19,7 @@ class SignupPersistenceAdapter(
   override fun signup(user: User): User {
 
     userRepository.findByEmail(user.email)?.let {
-      throw IllegalArgumentException("이미 가입된 이메일입니다.")
+      throw ApiException(UserErrorCode.USER_ALREADY_EXISTS)
     }
 
     val userEntity = UserEntity(
