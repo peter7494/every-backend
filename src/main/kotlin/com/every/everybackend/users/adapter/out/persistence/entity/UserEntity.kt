@@ -35,6 +35,9 @@ data class UserEntity(
   @Enumerated(EnumType.STRING)
   val status: UserStatus,
 
+  @Column(length = 6)
+  var verifyCode: String? = null,
+
   @Column(nullable = false)
   @Enumerated(EnumType.STRING)
   val provider: UserProvider,

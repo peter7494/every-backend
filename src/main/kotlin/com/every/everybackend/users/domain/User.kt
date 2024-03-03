@@ -14,6 +14,7 @@ data class User(
   val role: UserRole,
   val provider: UserProvider,
   val status: UserStatus,
+  val verifyCode: String? = null,
   val providerId: String? = null,
   val createdAt: LocalDateTime? = null,
   val updatedAt: LocalDateTime? = null

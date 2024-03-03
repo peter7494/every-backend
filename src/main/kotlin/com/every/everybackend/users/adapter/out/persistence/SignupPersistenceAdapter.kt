@@ -10,7 +10,9 @@ import com.every.everybackend.users.domain.enums.UserRole
 import com.every.everybackend.users.domain.enums.UserStatus
 import com.every.everybackend.users.port.out.persistence.SignupPersistencePort
 import org.springframework.stereotype.Component
+import org.springframework.transaction.annotation.Transactional
 
+@Transactional
 @Component
 class SignupPersistenceAdapter(
   private val userRepository: UserRepository
@@ -27,7 +29,8 @@ class SignupPersistenceAdapter(
       image = user.image,
       role = UserRole.USER,
       provider = UserProvider.Email,
-      status = UserStatus.UNVERIFIED
+      status = UserStatus.UNVERIFIED,
+      verifyCode = user.verifyCode
     ).let {
       userRepository.save(it)
     }
