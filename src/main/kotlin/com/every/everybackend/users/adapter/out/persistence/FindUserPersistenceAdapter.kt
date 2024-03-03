@@ -20,6 +20,7 @@ class FindUserPersistenceAdapter(
         role = it.role,
         provider = it.provider,
         status = it.status,
+        verifyCode = it.verifyCode,
         providerId = it.providerId,
         createdAt = it.createdAt,
         updatedAt = it.updatedAt

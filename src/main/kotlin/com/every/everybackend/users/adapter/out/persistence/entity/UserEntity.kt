@@ -33,7 +33,7 @@ data class UserEntity(
 
   @Column(nullable = false)
   @Enumerated(EnumType.STRING)
-  val status: UserStatus,
+  var status: UserStatus,
 
   @Column(length = 6)
   var verifyCode: String? = null,
