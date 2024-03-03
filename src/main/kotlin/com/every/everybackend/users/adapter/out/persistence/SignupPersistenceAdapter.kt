@@ -16,11 +16,9 @@ class SignupPersistenceAdapter(
   private val userRepository: UserRepository
 ): SignupPersistencePort {
 
-  override fun signup(user: User): User {
+  override fun createUser(user: User): User {
 
-    userRepository.findByEmail(user.email)?.let {
-      throw ApiException(UserErrorCode.USER_ALREADY_EXISTS)
-    }
+    isCheckSignup(user)
 
     val userEntity = UserEntity(
       email = user.email,
@@ -47,5 +45,11 @@ class SignupPersistenceAdapter(
       createdAt = userEntity.createdAt,
       updatedAt = userEntity.updatedAt
     )
+  }
+
+  private fun isCheckSignup(user: User) {
+    userRepository.findByEmail(user.email)?.let {
+      throw ApiException(UserErrorCode.USER_ALREADY_EXISTS)
+    }
   }
 }

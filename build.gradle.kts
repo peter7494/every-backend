@@ -45,6 +45,8 @@ dependencies {
   testImplementation("org.springframework.kafka:spring-kafka-test")
   testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
   testImplementation("org.springframework.security:spring-security-test")
+  testImplementation("io.mockk:mockk:1.13.10")
+  testRuntimeOnly("com.h2database:h2")
 }
 
 tasks.withType<KotlinCompile> {

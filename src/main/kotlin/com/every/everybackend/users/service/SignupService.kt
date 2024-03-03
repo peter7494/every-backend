@@ -26,6 +26,6 @@ class SignupService(
       status = UserStatus.UNVERIFIED,
     )
 
-    return signupPersistencePort.signup(user)
+    return signupPersistencePort.createUser(user)
   }
 }

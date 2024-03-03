@@ -4,5 +4,5 @@ import com.every.everybackend.users.domain.User
 
 interface SignupPersistencePort {
 
-  fun signup(user: User): User
+  fun createUser(user: User): User
 }
